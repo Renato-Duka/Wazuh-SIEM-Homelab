@@ -1,0 +1,13 @@
+<!--
+  Reference copy of the custom rule used on the manager
+  (/var/ossec/etc/rules/local_rules.xml), so it can be diffed/copied by
+  hand if you'd rather not run scripts/manager/add_custom_rule.sh.
+
+  Place it inside any <group>...</group> wrapper in that file, using a
+  rule id in the 100000+ range reserved for user-defined rules.
+-->
+<rule id="100100" level="5">
+  <location>github_events.log</location>
+  <description>GitHub webhook event received</description>
+  <group>github,</group>
+</rule>

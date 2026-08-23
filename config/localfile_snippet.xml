@@ -1,0 +1,4 @@
+<localfile>
+  <log_format>json</log_format>
+  <location>/Users/YOUR_USERNAME/wazuh-github-webhook/github_events.log</location>
+</localfile>

@@ -1,0 +1,10 @@
+# Keep secrets and local state out of the repo
+.env
+*.keys
+client.keys
+*.pem
+*.key
+wazuh-install-files.tar
+wazuh-passwords.txt
+.bash_history
+.DS_Store

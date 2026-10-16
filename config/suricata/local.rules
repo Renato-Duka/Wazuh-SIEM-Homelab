@@ -1,0 +1,11 @@
+# /etc/suricata/rules/local.rules
+#
+# Test signatures used to validate the setup. Neither is meant to stay enabled:
+# the first floods alerts on every ping, the second blocks all ICMP to 8.8.8.8.
+# Leave the file in place (empty) so suricata.yaml's rule-files entry still resolves.
+
+# IDS check: alert on any ICMP traffic
+alert icmp any any -> any any (msg:"TEST ICMP PING detected"; sid:1000001; rev:1;)
+
+# IPS check: drop ICMP to 8.8.8.8 only (pings to other hosts should still work)
+drop icmp any any -> 8.8.8.8 any (msg:"IPS TEST blocked ping to 8.8.8.8"; sid:1000002; rev:1;)

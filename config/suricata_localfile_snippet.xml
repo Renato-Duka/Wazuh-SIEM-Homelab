@@ -1,0 +1,10 @@
+<!--
+  Added inside the last <ossec_config> block of /var/ossec/etc/ossec.conf on the
+  manager, then `sudo systemctl restart wazuh-manager`. Wazuh's built-in Suricata
+  decoders and rules handle the EVE JSON format, so no custom rule is needed.
+  Search the dashboard with: rule.groups:suricata
+-->
+<localfile>
+  <log_format>json</log_format>
+  <location>/var/log/suricata/eve.json</location>
+</localfile>

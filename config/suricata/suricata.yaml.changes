@@ -1,0 +1,16 @@
+# Only the lines changed from the packaged /etc/suricata/suricata.yaml
+# (Suricata 8.0.3, Ubuntu ARM64). The full file is ~2,000 lines and unchanged otherwise.
+
+# 1. Capture interface: eth0 -> the VM's actual NIC (find it with `ip -br a`).
+#    Used in IDS (af-packet) mode; NFQUEUE mode ignores it but it's kept correct.
+af-packet:
+  - interface: enp0s8
+
+# 2. Load the local test rules alongside the suricata-update managed ruleset.
+rule-files:
+  - suricata.rules
+  - /etc/suricata/rules/local.rules
+
+# Gotcha: YAML is whitespace-sensitive. "-  interface" (two spaces after the
+# dash) fails to load. Always run `sudo suricata -T -c /etc/suricata/suricata.yaml`
+# after editing and look for "Configuration provided was successfully loaded".
